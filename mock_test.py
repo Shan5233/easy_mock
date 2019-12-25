@@ -12,6 +12,7 @@ def getconfig():
     cf.read(path,encoding='UTF-8')
     dbhost={}
     dbhost['host'] = cf['database']['host']
+    dbhost['port'] = cf['database']['port']
     dbhost['user']  = cf['database']['user']
     dbhost['password']  =cf['database']['password']
     dbhost['dbname']  = cf['database']['dbname']
@@ -25,11 +26,12 @@ def mock(path):
     method = methods.lower()
     dbhost = getconfig()
     host = dbhost['host']
+    port = int(dbhost['port'])
     user = dbhost['user']
     password = dbhost['password']
     dbname = dbhost['dbname']
     try:
-        db = pymysql.connect(host,user,password,dbname)
+        db = pymysql.connect(host=host, user=user,password=password,db=dbname,port=port)
         query = db.cursor()
         sql_query = "select resparams from mock_config where url=%s and status=0 and methods=%s"
         query.execute(sql_query,(url, method))
@@ -53,11 +55,12 @@ def mock2(path,num):
     method = methods.lower()
     dbhost = getconfig()
     host = dbhost['host']
+    port = int(dbhost['port'])
     user = dbhost['user']
     password = dbhost['password']
     dbname = dbhost['dbname']
     try:
-        db = pymysql.connect(host,user,password,dbname)
+        db = pymysql.connect(host=host, user=user,password=password,db=dbname,port=port)
         query = db.cursor()
         sql_query = "select resparams from mock_config where url=%s and status=0 and methods=%s"
         query.execute(sql_query,(url, method))

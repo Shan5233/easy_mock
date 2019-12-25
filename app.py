@@ -13,6 +13,7 @@ def getconfig():
     cf.read(path,encoding='UTF-8')
     dbhost={}
     dbhost['host'] = cf['database']['host']
+    dbhost['port'] = cf['database']['port']
     dbhost['user']  = cf['database']['user']
     dbhost['password']  =cf['database']['password']
     dbhost['dbname']  = cf['database']['dbname']
@@ -46,11 +47,13 @@ def api():
     pagenum = (page-1)*limit
     dbhost = getconfig()
     host = dbhost['host']
+    port = int(dbhost['port'])
     user = dbhost['user']
     password = dbhost['password']
     dbname = dbhost['dbname']
     try:
-        db = pymysql.connect(host,user,password,dbname)
+        db = pymysql.connect(host=host, user=user,password=password,db=dbname,port=port)
+        print(db)
         query1 = db.cursor()
         query2 = db.cursor()
         sql_query = "select id,title,methods,url,description,resparams,update_time from `mock_config` where `status`=0 order by update_time desc limit %s,%s"%(pagenum,limit)
@@ -94,10 +97,11 @@ def delmock():
     mockid = request.args.get("id")
     dbhost = getconfig()
     host = dbhost['host']
+    port = int(dbhost['port'])
     user = dbhost['user']
     password = dbhost['password']
     dbname = dbhost['dbname']
-    db = pymysql.connect(host,user,password,dbname)
+    db = pymysql.connect(host=host, user=user,password=password,db=dbname,port=port)
     delect = db.cursor()
     sql = "update mock_config set `status`=1 where id = %s" % mockid
     try:
@@ -125,10 +129,11 @@ def addmock():
     update_time = datetime.datetime.now().strftime("%Y-%m-%d %X")
     dbhost = getconfig()
     host = dbhost['host']
+    port = int(dbhost['port'])
     user = dbhost['user']
     password = dbhost['password']
     dbname = dbhost['dbname']
-    db = pymysql.connect(host, user, password, dbname)
+    db = pymysql.connect(host=host, user=user,password=password,db=dbname,port=port)
     add = db.cursor()
     sql = "INSERT INTO mock_config(title,methods,url,description,update_time,resparams,status) VALUES ('%s','%s','%s','%s','%s','%s',%s)" %(title,methods,url,description,update_time,resparams,status)
     try:
@@ -155,10 +160,11 @@ def editmock():
     update_time = datetime.datetime.now().strftime("%Y-%m-%d %X")
     dbhost = getconfig()
     host = dbhost['host']
+    port = int(dbhost['port'])
     user = dbhost['user']
     password = dbhost['password']
     dbname = dbhost['dbname']
-    db = pymysql.connect(host, user, password, dbname)
+    db = pymysql.connect(host=host, user=user,password=password,db=dbname,port=port)
     add = db.cursor()
     sql = "update mock_config set title='%s',methods='%s',url='%s',description='%s',update_time='%s',resparams='%s' where id=%s" %(title,methods,url,description,update_time,resparams,id)
     try:
