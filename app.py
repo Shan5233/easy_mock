@@ -2,12 +2,30 @@
 from flask import *
 import pymysql
 import datetime
+import configparser
 
 app = Flask(__name__)
+
+#读取配置文件
+def getconfig():
+    cf = configparser.ConfigParser()
+    path = 'db.ini'
+    cf.read(path,encoding='UTF-8')
+    dbhost={}
+    dbhost['host'] = cf['database']['host']
+    dbhost['user']  = cf['database']['user']
+    dbhost['password']  =cf['database']['password']
+    dbhost['dbname']  = cf['database']['dbname']
+    return dbhost
 
 # 首页
 @app.route('/index.html')
 def index():
+    return render_template('index.html')
+
+# 跳转到首页
+@app.route('/')
+def toindex():
     return render_template('index.html')
 
 # 点击添加按钮，弹出页
@@ -26,8 +44,13 @@ def api():
     page = int(request.args.get("page"))
     limit = int(request.args.get("limit"))
     pagenum = (page-1)*limit
+    dbhost = getconfig()
+    host = dbhost['host']
+    user = dbhost['user']
+    password = dbhost['password']
+    dbname = dbhost['dbname']
     try:
-        db = pymysql.connect("localhost", "root", "523523", "yanghang")
+        db = pymysql.connect(host,user,password,dbname)
         query1 = db.cursor()
         query2 = db.cursor()
         sql_query = "select id,title,methods,url,description,resparams,update_time from `mock_config` where `status`=0 order by update_time desc limit %s,%s"%(pagenum,limit)
@@ -50,22 +73,31 @@ def api():
             dict = {"id": id, "title": title, "methods": methods, "url": url, "description": description,
                     "resparams": resparams, "update_time": str_date}
             list.append(dict)
+            sql_result = json.dumps({
+                "code": 0,
+                "msg": "",
+                "count": num,
+                "data": list
+            }, ensure_ascii=False)
     except:
         print("Error: 数据还在火星")
+        sql_result = json.dumps({
+            "code": -2,
+            "msg": "数据还在火星",
+        }, ensure_ascii=False)
     db.close()
-    sql_result = json.dumps({
-        "code": 0,
-        "msg": "",
-        "count": num,
-        "data": list
-    }, ensure_ascii=False)
     return sql_result
 
 # 点击删除按钮，接收ajax，进行数据处理
 @app.route('/del', methods=['GET'])
 def delmock():
     mockid = request.args.get("id")
-    db = pymysql.connect("localhost", "root", "523523", "yanghang")
+    dbhost = getconfig()
+    host = dbhost['host']
+    user = dbhost['user']
+    password = dbhost['password']
+    dbname = dbhost['dbname']
+    db = pymysql.connect(host,user,password,dbname)
     delect = db.cursor()
     sql = "update mock_config set `status`=1 where id = %s" % mockid
     try:
@@ -91,8 +123,12 @@ def addmock():
     resparams = mockdata.get("resparams")
     status = 0
     update_time = datetime.datetime.now().strftime("%Y-%m-%d %X")
-
-    db = pymysql.connect("localhost", "root", "523523", "yanghang")
+    dbhost = getconfig()
+    host = dbhost['host']
+    user = dbhost['user']
+    password = dbhost['password']
+    dbname = dbhost['dbname']
+    db = pymysql.connect(host, user, password, dbname)
     add = db.cursor()
     sql = "INSERT INTO mock_config(title,methods,url,description,update_time,resparams,status) VALUES ('%s','%s','%s','%s','%s','%s',%s)" %(title,methods,url,description,update_time,resparams,status)
     try:
@@ -117,7 +153,12 @@ def editmock():
     description = mockdata.get("description")
     resparams = mockdata.get("resparams")
     update_time = datetime.datetime.now().strftime("%Y-%m-%d %X")
-    db = pymysql.connect("localhost", "root", "523523", "yanghang")
+    dbhost = getconfig()
+    host = dbhost['host']
+    user = dbhost['user']
+    password = dbhost['password']
+    dbname = dbhost['dbname']
+    db = pymysql.connect(host, user, password, dbname)
     add = db.cursor()
     sql = "update mock_config set title='%s',methods='%s',url='%s',description='%s',update_time='%s',resparams='%s' where id=%s" %(title,methods,url,description,update_time,resparams,id)
     try:
@@ -133,4 +174,4 @@ def editmock():
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0')
+    app.run()

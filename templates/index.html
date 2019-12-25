@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>Easy Mock</title>
     <link rel="stylesheet" href="{{ url_for('static',filename='layui/css/layui.css') }}"/>
-    <script src="../static/js/index.js"></script>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='img/mock.ico') }}">
     <script src="../static/layui/layui.js"></script>
 </head>
 <body class="layui-layout-body">
@@ -64,11 +64,11 @@
             }
             , toolbar: '#toolbarDemo' //开启工具栏，指向自定义工具栏模板选择器，详见文档
             , cols: [[ //表头
-                {field: 'id', title: 'ID', width: 50, fixed: 'left'}
+                {field: 'id', title: 'ID', width: 60, fixed: 'left',sort: true}
                 , {field: 'title', title: '接口名称', width: 250}
                 , {field: 'methods', title: '请求方式', width: 105, sort: true}
                 , {field: 'url', title: 'url', width: 270}
-                , {field: 'description', title: '接口描述', width: 200}
+                , {field: 'description', title: '接口描述', width: 190}
                 , {field: 'resparams', title: '期待返回', width: 330}
                 , {field: 'update_time', title: '更新时间', width: 160, sort: true}
                 , {fixed: 'right', align: 'center', toolbar: '#operation', width: 125}
