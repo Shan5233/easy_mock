@@ -1,0 +1,28 @@
+[2019-12-26 15:34:07 +0800] [24452] [INFO] Starting gunicorn 19.9.0
+[2019-12-26 15:34:07 +0800] [24452] [INFO] Listening at: http://172.28.27.133:8888 (24452)
+[2019-12-26 15:34:07 +0800] [24452] [INFO] Using worker: sync
+[2019-12-26 15:34:07 +0800] [24455] [INFO] Booting worker with pid: 24455
+[2019-12-26 15:34:07 +0800] [24457] [INFO] Booting worker with pid: 24457
+[2019-12-26 15:34:07 +0800] [24459] [INFO] Booting worker with pid: 24459
+[2019-12-26 15:34:07 +0800] [24461] [INFO] Booting worker with pid: 24461
+[2019-12-26 15:34:13 +0800] [24452] [INFO] Handling signal: hup
+[2019-12-26 15:34:13 +0800] [24452] [INFO] Hang up: Master
+[2019-12-26 15:34:13 +0800] [24467] [INFO] Booting worker with pid: 24467
+[2019-12-26 15:34:13 +0800] [24465] [INFO] Booting worker with pid: 24465
+[2019-12-26 15:34:13 +0800] [24470] [INFO] Booting worker with pid: 24470
+[2019-12-26 15:34:13 +0800] [24471] [INFO] Booting worker with pid: 24471
+[2019-12-26 15:38:12 +0800] [24465] [INFO] Parent changed, shutting down: <Worker 24465>
+[2019-12-26 15:38:12 +0800] [24465] [INFO] Worker exiting (pid: 24465)
+[2019-12-26 15:38:12 +0800] [24470] [INFO] Parent changed, shutting down: <Worker 24470>
+[2019-12-26 15:38:12 +0800] [24470] [INFO] Worker exiting (pid: 24470)
+[2019-12-26 15:38:12 +0800] [24467] [INFO] Parent changed, shutting down: <Worker 24467>
+[2019-12-26 15:38:12 +0800] [24467] [INFO] Worker exiting (pid: 24467)
+[2019-12-26 15:38:12 +0800] [24471] [INFO] Parent changed, shutting down: <Worker 24471>
+[2019-12-26 15:38:12 +0800] [24471] [INFO] Worker exiting (pid: 24471)
+[2019-12-26 15:41:36 +0800] [24582] [INFO] Starting gunicorn 19.9.0
+[2019-12-26 15:41:36 +0800] [24582] [INFO] Listening at: http://172.28.27.133:8888 (24582)
+[2019-12-26 15:41:36 +0800] [24582] [INFO] Using worker: sync
+[2019-12-26 15:41:36 +0800] [24585] [INFO] Booting worker with pid: 24585
+[2019-12-26 15:41:36 +0800] [24587] [INFO] Booting worker with pid: 24587
+[2019-12-26 15:41:36 +0800] [24589] [INFO] Booting worker with pid: 24589
+[2019-12-26 15:41:36 +0800] [24591] [INFO] Booting worker with pid: 24591

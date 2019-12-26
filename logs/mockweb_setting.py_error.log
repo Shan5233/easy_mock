@@ -1,0 +1,423 @@
+[2019-12-26 10:06:36 +0800] [22979] [INFO] Starting gunicorn 19.9.0
+[2019-12-26 10:09:21 +0800] [22991] [INFO] Starting gunicorn 19.9.0
+[2019-12-26 10:09:21 +0800] [22991] [INFO] Listening at: http://172.28.27.133:3333 (22991)
+[2019-12-26 10:09:21 +0800] [22991] [INFO] Using worker: sync
+[2019-12-26 10:09:21 +0800] [22994] [INFO] Booting worker with pid: 22994
+[2019-12-26 10:09:22 +0800] [22996] [INFO] Booting worker with pid: 22996
+[2019-12-26 10:09:22 +0800] [22998] [INFO] Booting worker with pid: 22998
+[2019-12-26 10:09:22 +0800] [23000] [INFO] Booting worker with pid: 23000
+[2019-12-26 10:09:54 +0800] [22991] [INFO] Handling signal: int
+[2019-12-26 10:09:54 +0800] [22998] [INFO] Worker exiting (pid: 22998)
+[2019-12-26 10:09:54 +0800] [22994] [INFO] Worker exiting (pid: 22994)
+[2019-12-26 10:09:54 +0800] [22996] [INFO] Worker exiting (pid: 22996)
+[2019-12-26 10:09:54 +0800] [23000] [INFO] Worker exiting (pid: 23000)
+[2019-12-26 10:09:54 +0800] [22991] [INFO] Shutting down: Master
+[2019-12-26 10:10:04 +0800] [23011] [INFO] Starting gunicorn 19.9.0
+[2019-12-26 10:10:04 +0800] [23011] [INFO] Listening at: http://172.28.27.133:3333 (23011)
+[2019-12-26 10:10:04 +0800] [23011] [INFO] Using worker: sync
+[2019-12-26 10:10:04 +0800] [23014] [INFO] Booting worker with pid: 23014
+[2019-12-26 10:10:04 +0800] [23016] [INFO] Booting worker with pid: 23016
+[2019-12-26 10:10:04 +0800] [23018] [INFO] Booting worker with pid: 23018
+[2019-12-26 10:10:05 +0800] [23020] [INFO] Booting worker with pid: 23020
+[2019-12-26 10:19:28 +0800] [23014] [INFO] Parent changed, shutting down: <Worker 23014>
+[2019-12-26 10:19:28 +0800] [23014] [INFO] Worker exiting (pid: 23014)
+[2019-12-26 10:19:28 +0800] [23016] [INFO] Parent changed, shutting down: <Worker 23016>
+[2019-12-26 10:19:28 +0800] [23016] [INFO] Worker exiting (pid: 23016)
+[2019-12-26 10:19:28 +0800] [23018] [INFO] Parent changed, shutting down: <Worker 23018>
+[2019-12-26 10:19:28 +0800] [23018] [INFO] Worker exiting (pid: 23018)
+[2019-12-26 10:19:28 +0800] [23020] [INFO] Parent changed, shutting down: <Worker 23020>
+[2019-12-26 10:19:28 +0800] [23020] [INFO] Worker exiting (pid: 23020)
+[2019-12-26 15:32:54 +0800] [24439] [INFO] Starting gunicorn 19.9.0
+[2019-12-26 15:32:54 +0800] [24439] [INFO] Listening at: http://172.28.27.133:3333 (24439)
+[2019-12-26 15:32:54 +0800] [24439] [INFO] Using worker: sync
+[2019-12-26 15:32:54 +0800] [24442] [INFO] Booting worker with pid: 24442
+[2019-12-26 15:32:54 +0800] [24444] [INFO] Booting worker with pid: 24444
+[2019-12-26 15:32:54 +0800] [24446] [INFO] Booting worker with pid: 24446
+[2019-12-26 15:32:54 +0800] [24448] [INFO] Booting worker with pid: 24448
+[2019-12-26 15:34:13 +0800] [24439] [INFO] Handling signal: hup
+[2019-12-26 15:34:13 +0800] [24439] [INFO] Hang up: Master
+[2019-12-26 15:34:13 +0800] [24463] [INFO] Booting worker with pid: 24463
+[2019-12-26 15:34:13 +0800] [24469] [INFO] Booting worker with pid: 24469
+[2019-12-26 15:34:13 +0800] [24464] [INFO] Booting worker with pid: 24464
+[2019-12-26 15:34:13 +0800] [24466] [INFO] Booting worker with pid: 24466
+[2019-12-26 15:35:12,039] ERROR in app: Exception on /code/mock/test/ [GET]
+Traceback (most recent call last):
+  File "/root/test/mockweb/mockweb.py", line 56, in api
+    print(db)
+OSError: [Errno 5] Input/output error
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/root/test/mockweb/mockweb.py", line 86, in api
+    print("Error: 数据还在火星")
+OSError: [Errno 5] Input/output error
+[2019-12-26 15:35:14,707] ERROR in app: Exception on /code/mock/test/ [GET]
+Traceback (most recent call last):
+  File "/root/test/mockweb/mockweb.py", line 56, in api
+    print(db)
+OSError: [Errno 5] Input/output error
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/root/test/mockweb/mockweb.py", line 86, in api
+    print("Error: 数据还在火星")
+OSError: [Errno 5] Input/output error
+[2019-12-26 15:35:16,411] ERROR in app: Exception on /code/mock/test/ [GET]
+Traceback (most recent call last):
+  File "/root/test/mockweb/mockweb.py", line 56, in api
+    print(db)
+OSError: [Errno 5] Input/output error
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/root/test/mockweb/mockweb.py", line 86, in api
+    print("Error: 数据还在火星")
+OSError: [Errno 5] Input/output error
+[2019-12-26 15:35:16,509] ERROR in app: Exception on /code/mock/test/ [GET]
+Traceback (most recent call last):
+  File "/root/test/mockweb/mockweb.py", line 56, in api
+    print(db)
+OSError: [Errno 5] Input/output error
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/root/test/mockweb/mockweb.py", line 86, in api
+    print("Error: 数据还在火星")
+OSError: [Errno 5] Input/output error
+[2019-12-26 15:35:16,700] ERROR in app: Exception on /code/mock/test/ [GET]
+Traceback (most recent call last):
+  File "/root/test/mockweb/mockweb.py", line 56, in api
+    print(db)
+OSError: [Errno 5] Input/output error
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/root/test/mockweb/mockweb.py", line 86, in api
+    print("Error: 数据还在火星")
+OSError: [Errno 5] Input/output error
+[2019-12-26 15:35:16,866] ERROR in app: Exception on /code/mock/test/ [GET]
+Traceback (most recent call last):
+  File "/root/test/mockweb/mockweb.py", line 56, in api
+    print(db)
+OSError: [Errno 5] Input/output error
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/root/test/mockweb/mockweb.py", line 86, in api
+    print("Error: 数据还在火星")
+OSError: [Errno 5] Input/output error
+[2019-12-26 15:35:17,053] ERROR in app: Exception on /code/mock/test/ [GET]
+Traceback (most recent call last):
+  File "/root/test/mockweb/mockweb.py", line 56, in api
+    print(db)
+OSError: [Errno 5] Input/output error
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/root/test/mockweb/mockweb.py", line 86, in api
+    print("Error: 数据还在火星")
+OSError: [Errno 5] Input/output error
+[2019-12-26 15:35:17,242] ERROR in app: Exception on /code/mock/test/ [GET]
+Traceback (most recent call last):
+  File "/root/test/mockweb/mockweb.py", line 56, in api
+    print(db)
+OSError: [Errno 5] Input/output error
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/root/test/mockweb/mockweb.py", line 86, in api
+    print("Error: 数据还在火星")
+OSError: [Errno 5] Input/output error
+[2019-12-26 15:35:17,324] ERROR in app: Exception on /code/mock/test/ [GET]
+Traceback (most recent call last):
+  File "/root/test/mockweb/mockweb.py", line 56, in api
+    print(db)
+OSError: [Errno 5] Input/output error
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/root/test/mockweb/mockweb.py", line 86, in api
+    print("Error: 数据还在火星")
+OSError: [Errno 5] Input/output error
+[2019-12-26 15:35:17,477] ERROR in app: Exception on /code/mock/test/ [GET]
+Traceback (most recent call last):
+  File "/root/test/mockweb/mockweb.py", line 56, in api
+    print(db)
+OSError: [Errno 5] Input/output error
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/root/test/mockweb/mockweb.py", line 86, in api
+    print("Error: 数据还在火星")
+OSError: [Errno 5] Input/output error
+[2019-12-26 15:35:17,658] ERROR in app: Exception on /code/mock/test/ [GET]
+Traceback (most recent call last):
+  File "/root/test/mockweb/mockweb.py", line 56, in api
+    print(db)
+OSError: [Errno 5] Input/output error
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/root/test/mockweb/mockweb.py", line 86, in api
+    print("Error: 数据还在火星")
+OSError: [Errno 5] Input/output error
+[2019-12-26 15:35:17,814] ERROR in app: Exception on /code/mock/test/ [GET]
+Traceback (most recent call last):
+  File "/root/test/mockweb/mockweb.py", line 56, in api
+    print(db)
+OSError: [Errno 5] Input/output error
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/root/test/mockweb/mockweb.py", line 86, in api
+    print("Error: 数据还在火星")
+OSError: [Errno 5] Input/output error
+[2019-12-26 15:35:17,975] ERROR in app: Exception on /code/mock/test/ [GET]
+Traceback (most recent call last):
+  File "/root/test/mockweb/mockweb.py", line 56, in api
+    print(db)
+OSError: [Errno 5] Input/output error
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/root/test/mockweb/mockweb.py", line 86, in api
+    print("Error: 数据还在火星")
+OSError: [Errno 5] Input/output error
+[2019-12-26 15:35:18,109] ERROR in app: Exception on /code/mock/test/ [GET]
+Traceback (most recent call last):
+  File "/root/test/mockweb/mockweb.py", line 56, in api
+    print(db)
+OSError: [Errno 5] Input/output error
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/root/test/mockweb/mockweb.py", line 86, in api
+    print("Error: 数据还在火星")
+OSError: [Errno 5] Input/output error
+[2019-12-26 15:35:19,982] ERROR in app: Exception on /code/mock/test/ [GET]
+Traceback (most recent call last):
+  File "/root/test/mockweb/mockweb.py", line 56, in api
+    print(db)
+OSError: [Errno 5] Input/output error
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/root/test/mockweb/mockweb.py", line 86, in api
+    print("Error: 数据还在火星")
+OSError: [Errno 5] Input/output error
+[2019-12-26 15:38:20 +0800] [24466] [INFO] Parent changed, shutting down: <Worker 24466>
+[2019-12-26 15:38:20 +0800] [24466] [INFO] Worker exiting (pid: 24466)
+[2019-12-26 15:38:20 +0800] [24463] [INFO] Parent changed, shutting down: <Worker 24463>
+[2019-12-26 15:38:20 +0800] [24463] [INFO] Worker exiting (pid: 24463)
+[2019-12-26 15:38:20 +0800] [24469] [INFO] Parent changed, shutting down: <Worker 24469>
+[2019-12-26 15:38:20 +0800] [24469] [INFO] Worker exiting (pid: 24469)
+[2019-12-26 15:38:20 +0800] [24464] [INFO] Parent changed, shutting down: <Worker 24464>
+[2019-12-26 15:38:20 +0800] [24464] [INFO] Worker exiting (pid: 24464)
+[2019-12-26 15:40:39 +0800] [24540] [INFO] Starting gunicorn 19.9.0
+[2019-12-26 15:40:39 +0800] [24540] [INFO] Listening at: http://172.28.27.133:3333 (24540)
+[2019-12-26 15:40:39 +0800] [24540] [INFO] Using worker: sync
+[2019-12-26 15:40:39 +0800] [24543] [INFO] Booting worker with pid: 24543
+[2019-12-26 15:40:39 +0800] [24545] [INFO] Booting worker with pid: 24545
+[2019-12-26 15:40:39 +0800] [24547] [INFO] Booting worker with pid: 24547
+[2019-12-26 15:40:40 +0800] [24549] [INFO] Booting worker with pid: 24549
+[2019-12-26 15:40:50 +0800] [24540] [INFO] Handling signal: hup
+[2019-12-26 15:40:50 +0800] [24540] [INFO] Hang up: Master
+[2019-12-26 15:40:50 +0800] [24551] [INFO] Booting worker with pid: 24551
+[2019-12-26 15:40:50 +0800] [24552] [INFO] Booting worker with pid: 24552
+[2019-12-26 15:40:50 +0800] [24553] [INFO] Booting worker with pid: 24553
+[2019-12-26 15:40:50 +0800] [24555] [INFO] Booting worker with pid: 24555
