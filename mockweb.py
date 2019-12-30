@@ -3,6 +3,7 @@ from flask import *
 import pymysql
 import datetime
 import configparser
+from DBUtils.PooledDB import PooledDB
 
 app = Flask(__name__)
 
@@ -20,6 +21,32 @@ def getconfig():
     dbhost['dbname'] = cf['database']['dbname']
     return dbhost
 
+# 数据库连接池
+dbhost = getconfig()
+host = dbhost['host']
+port = int(dbhost['port'])
+user = dbhost['user']
+password = dbhost['password']
+dbname = dbhost['dbname']
+pool = PooledDB(
+    creator=pymysql,  # 使用链接数据库的模块
+    maxconnections=6,  # 连接池允许的最大连接数，0和None表示不限制连接数
+    mincached=2,  # 初始化时，链接池中至少创建的空闲的链接，0表示不创建
+    maxcached=5,  # 链接池中最多闲置的链接，0和None不限制
+    maxshared=3,
+    # 链接池中最多共享的链接数量，0和None表示全部共享。PS: 无用，因为pymysql和MySQLdb等模块的 threadsafety都为1，所有值无论设置为多少，_maxcached永远为0，所以永远是所有链接都共享。
+    blocking=True,  # 连接池中如果没有可用连接后，是否阻塞等待。True，等待；False，不等待然后报错
+    maxusage=None,  # 一个链接最多被重复使用的次数，None表示无限制
+    setsession=[],  # 开始会话前执行的命令列表。如：["set datestyle to ...", "set time zone ..."]
+    ping=0,
+    # ping MySQL服务端，检查是否服务可用。# 如：0 = None = never, 1 = default = whenever it is requested, 2 = when a cursor is created, 4 = when a query is executed, 7 = always
+    host=host,
+    port=port,
+    user=user,
+    password=password,
+    database=dbname,
+    charset='utf8'
+)
 
 # 首页
 @app.route('/index.html')
@@ -51,17 +78,10 @@ def api():
     page = int(request.args.get("page"))
     limit = int(request.args.get("limit"))
     pagenum = (page - 1) * limit
-    dbhost = getconfig()
-    host = dbhost['host']
-    port = int(dbhost['port'])
-    user = dbhost['user']
-    password = dbhost['password']
-    dbname = dbhost['dbname']
     try:
-        db = pymysql.connect(host=host, user=user, password=password, db=dbname, port=port)
-        print(db)
-        query1 = db.cursor()
-        query2 = db.cursor()
+        conn = pool.connection()
+        query1 = conn.cursor()
+        query2 = conn.cursor()
         sql_query = "select id,title,methods,url,description,resparams,update_time from `mock_config` where `status`=0 order by update_time desc limit %s,%s" % (
         pagenum, limit)
         sql_count = "select count(id) from `mock_config` where `status`=0"
@@ -89,13 +109,15 @@ def api():
                 "count": num,
                 "data": list
             }, ensure_ascii=False)
+        query1.close()
+        query2.close()
+        conn.close()
     except:
         print("Error: 数据还在火星")
         sql_result = json.dumps({
             "code": -2,
             "msg": "数据还在火星",
         }, ensure_ascii=False)
-    db.close()
     return sql_result
 
 
@@ -103,25 +125,19 @@ def api():
 @app.route('/del', methods=['GET'])
 def delmock():
     mockid = request.args.get("id")
-    dbhost = getconfig()
-    host = dbhost['host']
-    port = int(dbhost['port'])
-    user = dbhost['user']
-    password = dbhost['password']
-    dbname = dbhost['dbname']
-    db = pymysql.connect(host=host, user=user, password=password, db=dbname, port=port)
-    delect = db.cursor()
+    conn = pool.connection()
+    delect = conn.cursor()
     sql = "update mock_config set `status`=1 where id = %s" % mockid
     try:
         delect.execute(sql)  # 执行SQL语句
-        db.commit()  # 提交到数据库执行
+        conn.commit()  # 提交到数据库执行
         result = {'status': 0}
         del_result = json.dumps(result)
     except:
-        db.rollback()  # 发生错误时回滚
+        conn.rollback()  # 发生错误时回滚
     # 关闭数据库连接
-    db.close()
-
+    delect.close()
+    conn.close()
     return del_result
 
 
@@ -136,25 +152,20 @@ def addmock():
     resparams = mockdata.get("resparams")
     status = 0
     update_time = datetime.datetime.now().strftime("%Y-%m-%d %X")
-    dbhost = getconfig()
-    host = dbhost['host']
-    port = int(dbhost['port'])
-    user = dbhost['user']
-    password = dbhost['password']
-    dbname = dbhost['dbname']
-    db = pymysql.connect(host=host, user=user, password=password, db=dbname, port=port)
-    add = db.cursor()
+    conn = pool.connection()
+    add = conn.cursor()
     sql = "INSERT INTO mock_config(title,methods,url,description,update_time,resparams,status) VALUES ('%s','%s','%s','%s','%s','%s',%s)" % (
     title, methods, url, description, update_time, resparams, status)
     try:
         add.execute(sql)  # 执行SQL语句
-        db.commit()  # 提交到数据库执行
+        conn.commit()  # 提交到数据库执行
         result = {'status': 0}
         add_result = json.dumps(result)
     except:
-        db.rollback()  # 发生错误时回滚
+        conn.rollback()  # 发生错误时回滚
     # 关闭数据库连接
-    db.close()
+    add.close()
+    conn.close()
     return add_result
 
 
@@ -169,25 +180,20 @@ def editmock():
     description = mockdata.get("description")
     resparams = mockdata.get("resparams")
     update_time = datetime.datetime.now().strftime("%Y-%m-%d %X")
-    dbhost = getconfig()
-    host = dbhost['host']
-    port = int(dbhost['port'])
-    user = dbhost['user']
-    password = dbhost['password']
-    dbname = dbhost['dbname']
-    db = pymysql.connect(host=host, user=user, password=password, db=dbname, port=port)
-    add = db.cursor()
+    conn = pool.connection()
+    edit = conn.cursor()
     sql = "update mock_config set title='%s',methods='%s',url='%s',description='%s',update_time='%s',resparams='%s' where id=%s" % (
     title, methods, url, description, update_time, resparams, id)
     try:
-        add.execute(sql)  # 执行SQL语句
-        db.commit()  # 提交到数据库执行
+        edit.execute(sql)  # 执行SQL语句
+        conn.commit()  # 提交到数据库执行
         result = {'status': 0}
         edit_result = json.dumps(result)
     except:
-        db.rollback()  # 发生错误时回滚
+        conn.rollback()  # 发生错误时回滚
     # 关闭数据库连接
-    db.close()
+    edit.close()
+    conn.close()
     return edit_result
 
 
